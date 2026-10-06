@@ -48,8 +48,8 @@ jobs:
           apk="Chunky/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk"
           test -s "$apk"
           ${ANDROID_HOME}/build-tools/36.0.0/aapt dump badging "$apk" | grep -F "package: name='com.example.tvbrowser'"
-          aapt dump badging "$apk" | grep -F "sdkVersion:'26'"
-          aapt dump badging "$apk" | grep -F "leanback-launchable-activity:"
+          ${ANDROID_HOME}/build-tools/36.0.0/aapt dump badging "$apk" | grep -F "sdkVersion:'26'"
+          ${ANDROID_HOME}/build-tools/36.0.0/aapt dump badging "$apk" | grep -F "leanback-launchable-activity:"
           unzip -Z1 "$apk" | grep -E '^lib/armeabi-v7a/.*\.so$'
           if unzip -Z1 "$apk" | grep -Eq '^lib/arm64-v8a/'; then
             echo "Unexpected arm64-v8a library in the 32-bit APK" >&2
